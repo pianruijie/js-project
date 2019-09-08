@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,width=decive-width,initial-scale=1.0"/>
+  <title>Title</title>
+</head>
+<body>
+<script>
+  //认识原型
+  function human(){}
+  human.prototype.name = '张三'
+  human.prototype.sayName = function() {
+    console.log(this.name)
+  }
+  function person() {}
+  person.prototype = new human()
+  let personA = new person();
+  //查找顺序为：personA本身 -> personA.__proto__(person.prototype) -> personA.__proto__.__proto__(human.prototype) 已经找到，找不到的话会继续查找，personA.__proto__.__proto__.__proto__,也就是Object.prototype
+  personA.sayName()
+  //原型关系
+  console.log(person.prototype === personA.__proto__)
+  console.log(person.prototype.__proto__ === human.prototype)
+  console.log(human.prototype.__proto__ === Object.prototype)
+  //原型继承
+  //构造函数继承
+  //构造函数继承的好处是每次都会分配新的空间，但是这样使函数的可复用性完全消失，每次new，都会为sayName函数分配新的空间，造成内存空间的浪费
+  function human1(name){
+    this.name = name
+    this.sayName = function() {
+      console.log(this.name)
+    }
+  }
+  let personB = new human1('李四');
+  personB.sayName();
+  //组合继承
+  //使用构造函数的内容封闭优点和原型的可复用
+  function human2(info) {
+    this.info = info
+  }
+  human2.prototype.sayName = function() {
+    console.log(this.info.name)
+  }
+  function people(info) {
+    human2.call(this,info)
+  }
+  people.prototype = new human2()
+  people.prototype.constructor = people
+  let personC = new people({name:'王五',age:18});
+  console.log(personC)
+  personC.sayName();
+  //组合继承最大的问题就是会调用超类的构造函数两次，第一次是初始化子类的原型对象的时候，第二次是在子类的构造函数内部，导致info分别出现在personC对象上，和personC.__proto__上
+  //寄生组合继承
+  //寄生组合继承将超类的原型对象赋值给子类
+  function human3(info) {
+    this.info = info
+  }
+  human3.prototype.sayName = function() {
+    console.log(this.info.name)
+  }
+  function people(info) {
+    human3.call(this,info)
+  }
+  var mid = human3.prototype
+  mid.constructor = people
+  people.prototype = mid
+  let personD = new people({name:'赵六',age:18});
+  console.log(personD)
+  console.log(people.prototype)
+  personD.sayName();
+</script>
+</body>
+</html>

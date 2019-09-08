@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // function* demo() {
+    //   yield setTimeout(()=>{
+    //     console.log(11111)
+    //   },2000);
+    //   yield '完成了'
+    // }
+    // let a = demo();
+    // console.log(a.next());
+    // console.log(a.next());
+
+
+    function* f() {
+    for (var i = 0; true; i++) {
+      var reset = yield i;
+      if (reset) {
+        i = -1;
+      }
+    }
+  }
+
+  var g = f();
+
+  console.log(g.next()); // { value: 0, done: false }
+  console.log(g.next()); // { value: 1, done: false }
+  console.log(g.next(true)); // { value: 0, done: false }
+  //
+  // function* foo(x) {
+  //   var y = 2 * (yield (x + 1));
+  //   var z = yield (y / 3);
+  //   return (x + y + z);
+  // }
+  //
+  // var a = foo(5);
+  // let b = a.next().value; // Object{value:6, done:false}
+  // let c = a.next(b).value; // Object{value:NaN, done:false}
+  // console.log(a.next(c)); // Object{value:NaN, done:true}
+</script>
+</body>
+</html>

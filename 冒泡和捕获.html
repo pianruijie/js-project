@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,width=decive-width,initial-scale=1.0"/>
+  <title>Title</title>
+</head>
+    <style>
+      *{margin: 0;padding: 0}
+      html,body{height:100%; width:100%}
+    </style>
+<body>
+<div>
+  <div id="parent">
+    父元素
+    <div id="child">
+      子元素
+    </div>
+  </div>
+</div>
+</body>
+<script>
+  document.getElementById('parent').addEventListener('click',()=>{
+    alert('parent 捕获')
+  },true)
+  document.getElementById('parent').addEventListener('click',()=>{
+    alert('parent 冒泡')
+  },false)
+  document.getElementById('child').addEventListener('click',()=>{
+    alert('child 捕获')
+  },true)
+  document.getElementById('child').addEventListener('click',()=>{
+    alert('child 冒泡')
+  },false)
+  // document.getElementById('parent').addEventListener('click',()=>{
+  //   alert('parent')
+  // })
+  // document.getElementById('child').addEventListener('click',()=>{
+  //   alert('child')
+  // })
+
+</script>
+</html>

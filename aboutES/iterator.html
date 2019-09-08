@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //遍历器
+    function makeIterator(array){
+      let newIndex = 0;
+      return {
+        next:function() {
+          newIndex ++;
+          return newIndex < array.length?{value:array[newIndex],done:false}:{value:undefined,done:true};
+        }
+      }
+    }
+</script>
+</body>
+</html>

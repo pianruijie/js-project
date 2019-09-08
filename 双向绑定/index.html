@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,width=decive-width,initial-scale=1.0"/>
+  <title>Title</title>
+</head>
+<body>
+  <input type="text" p-model="name" >
+  <div></div>
+</body>
+<script>
+  let data = {
+    name:'张三'
+  }
+  function observe(data) {
+    for (var key in data){
+      if (data.hasOwnProperty(key)){
+        define(data,key)
+      }
+    }
+  }
+  function define(data,key) {
+    let value = data[key]
+    Object.defineProperty(data,key,{
+      enumerable:true,
+      configurable:true,
+      writable:true,
+      get:function() {
+        return value
+      },
+      set:function(newVal) {
+
+      }
+    })
+  }
+
+</script>
+</html>

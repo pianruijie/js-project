@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,width=decive-width,initial-scale=1.0"/>
+  <title>Title</title>
+</head>
+    <style>
+      *{margin: 0;padding: 0}
+      html,body{height:100%; width:100%}
+    </style>
+<script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+<body>
+<div>
+  <ul class="ul">
+    <li id="li1">1</li>
+    <li id="li2">2</li>
+    <li id="li3">3</li>
+    <li id="li4">4</li>
+    <li id="li5">5</li>
+  </ul>
+</div>
+</body>
+<script>
+//闭包是由函数以及创建该函数的词法环境组合而成，这个环境包含了这个闭包创建时所能访问的所有局部变量
+//两种方式都可以实现，点几弹几
+
+  // for (var i = 0;i<5;i++){
+  //   (function() {
+  //     let index = i;
+  //     $(`#li${index}`).click(()=>{
+  //       console.log(index)
+  //     })
+  //   })()
+  // }
+
+  function showIndex(index) {
+    console.log(index)
+  }
+  function useFunc(index) {
+    return function() {
+      showIndex(index)
+    }
+  }
+  for (var i = 0;i<5;i++) {
+      $(`#li${i}`).click(useFunc(i))
+  }
+</script>
+</html>

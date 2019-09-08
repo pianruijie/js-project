@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+  // resolve和reject会等同步事件执行完成之后才会执行。
+  let a = new Promise((resolve, reject) => {
+    resolve(2);
+  });
+  a.then((data)=>{
+    console.log(data);
+  });
+
+
+
+  // let promise1 = new Promise((resolve, reject) => {
+  //   setTimeout(() => {
+  //     reject('promise1');
+  //   }, 1000)
+  // });
+  // promise1.then(() => {}, (err) => {return err}).then((data) => {
+  //   console.log(data);
+  // }, () => {});
+
+  // // 值的传递
+  // let promise1 = new Promise((resolve, reject) => {
+  //   setTimeout(() => {
+  //     resolve(1);
+  //     throw new Error('fail');
+  //   }, 1000)
+  // });
+  // promise1.then((data)=> {console.log(data)},(err)=>{return err}).catch((err)=>{
+  //   console.log(err);
+  // });
+
+  // 错误机制
+  // let promise1 = new Promise((resolve, reject) => {
+  //   setTimeout(() => {
+  //     resolve('success')
+  //   }, 1000)
+  // });
+  // promise2 = promise1.then(res => {
+  //   throw new Error('这里抛出一个异常e')
+  // });
+  // promise2.then(res => {
+  //   console.log(res)
+  // }, err => {
+  //   console.log(err) //1秒后打印出：这里抛出一个异常e
+  // })
+
+
+  // let promise1 = new Promise((resolve, reject) => {
+  //   resolve('ss');
+  // });
+  // promise1.then((data)=>{
+  //   data();
+  // }).then(null,(err)=>{
+  //   console.log(err);
+  // })
+</script>
+</body>
+</html>

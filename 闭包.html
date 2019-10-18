@@ -28,25 +28,25 @@
 //闭包是由函数以及创建该函数的词法环境组合而成，这个环境包含了这个闭包创建时所能访问的所有局部变量
 //两种方式都可以实现，点几弹几
 
-  // for (var i = 0;i<5;i++){
-  //   (function() {
-  //     let index = i;
-  //     $(`#li${index}`).click(()=>{
-  //       console.log(index)
-  //     })
-  //   })()
-  // }
+  for (var i = 0;i<5;i++){
+    (function() {
+      var index = i;
+      $(`#li${index}`).click(()=>{
+        console.log(index)
+      })
+    })()
+  }
 
-  function showIndex(index) {
-    console.log(index)
-  }
-  function useFunc(index) {
-    return function() {
-      showIndex(index)
-    }
-  }
-  for (var i = 0;i<5;i++) {
-      $(`#li${i}`).click(useFunc(i))
-  }
+  // function showIndex(index) {
+  //   console.log(index)
+  // }
+  // function useFunc(index) {
+  //   return function() {
+  //     showIndex(index)
+  //   }
+  // }
+  // for (var i = 0;i<5;i++) {
+  //     $(`#li${i}`).click(useFunc(i))
+  // }
 </script>
 </html>

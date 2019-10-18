@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,width=decive-width,initial-scale=1.0"/>
+  <title>Title</title>
+</head>
+<body>
+<input type="text" v-model="a" @input="foo">
+</body>
+<script>
+  let start = new Date().getTime()
+  let end;
+  function foo(){
+    end = new Date().getTime()
+    if (end-start>200){
+      start = end;
+      req(a)
+    };
+  }
+  function req() {
+    ;
+  }
+</script>
+</html>

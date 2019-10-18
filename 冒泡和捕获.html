@@ -8,36 +8,32 @@
     <style>
       *{margin: 0;padding: 0}
       html,body{height:100%; width:100%}
+      #child1,#child2{
+        width: 100px;
+        height: 50px;
+        background: red;
+      }
     </style>
 <body>
 <div>
   <div id="parent">
-    父元素
-    <div id="child">
-      子元素
-    </div>
+    <div id="child1"></div>
+    <div id="child2"></div>
   </div>
+  <a href="http://www.baidu.com">11</a>
 </div>
 </body>
 <script>
-  document.getElementById('parent').addEventListener('click',()=>{
-    alert('parent 捕获')
-  },true)
-  document.getElementById('parent').addEventListener('click',()=>{
-    alert('parent 冒泡')
-  },false)
-  document.getElementById('child').addEventListener('click',()=>{
-    alert('child 捕获')
-  },true)
-  document.getElementById('child').addEventListener('click',()=>{
-    alert('child 冒泡')
-  },false)
-  // document.getElementById('parent').addEventListener('click',()=>{
-  //   alert('parent')
-  // })
-  // document.getElementById('child').addEventListener('click',()=>{
-  //   alert('child')
-  // })
+  let parent = document.getElementById("parent")
+  parent.addEventListener('click',function(e) {
+    e.stopPropagation()
+    console.log(e.target)
+  })
+  let a = document.getElementsByTagName("a")[0]
+  console.log(a)
+  a.addEventListener('click',function(e) {
+    // e.preventDefault()
+  })
 
 </script>
 </html>

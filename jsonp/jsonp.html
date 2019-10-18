@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,width=decive-width,initial-scale=1.0"/>
+  <title>Title</title>
+</head>
+<body>
+<button id="b1">点我</button>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script>
+  var sss = function(res) {
+    console.log(res)
+  }
+</script>
+<script src="http://127.0.0.1:3000/a"></script>
+<script>
+  $("#b1").click(function () {
+    $.ajax({
+      url: "http://127.0.0.1:3000/a",
+      type: "get",
+      success:function (res) {
+        console.log(res);
+      }
+    })
+  });
+</script>
+</body>
+</html>
